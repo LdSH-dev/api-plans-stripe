@@ -7,6 +7,7 @@ until nc -z -v -w30 db 5432
   done
 
 echo "Running Prisma migrations..."
+npx prisma generate
 npx prisma migrate deploy
 
 npm run start
