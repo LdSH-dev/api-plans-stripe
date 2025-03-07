@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "c159a4d6-7f3c-4d4a-9c45-b88950833312",
+		"name": "NewToo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40334550"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"leonardohemming@gmail.com\",\r\n    \"password\": \"@Leo102030\",\r\n    \"is_admin\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/auth/register"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"leonardohemming@gmail.com\",\r\n    \"password\": \"@Leo102030\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/auth/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plans",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlM2NiYjg1My03ZGQyLTQ3ZGUtODljMC0xZjRiMDU2ZTllODQiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzNjQzOTksImV4cCI6MTc0MTM2Nzk5OX0.QlwvL-j0Tn6wM7WdbzuXe9BCAm_TGTlR8Lm8Fz7XSIo"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Gold Plan\",\r\n  \"price\": 49.99\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/plans"
+					},
+					"response": []
+				},
+				{
+					"name": "Get All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZDBhMDcyMy04ZjFlLTQyNzQtYWNlNC0wOGZjYjBlZDFiYzUiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEyNjMxNTQsImV4cCI6MTc0MTI2Njc1NH0.y348KpSiMXoX2Buz0XNpCufkKW_nW9HfHs49orrS-bg"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/plans"
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZDBhMDcyMy04ZjFlLTQyNzQtYWNlNC0wOGZjYjBlZDFiYzUiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEyMzM3MjgsImV4cCI6MTc0MTIzNzMyOH0.cBXZItwrRicDwxwExp_RL9vJWKfqBJ-Vh8Ng0-fnSeQ"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/plans/a52125fb-ce1d-4b59-b967-e30313f1ea9e"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZDBhMDcyMy04ZjFlLTQyNzQtYWNlNC0wOGZjYjBlZDFiYzUiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEyMzM3MjgsImV4cCI6MTc0MTIzNzMyOH0.cBXZItwrRicDwxwExp_RL9vJWKfqBJ-Vh8Ng0-fnSeQ"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/plans/a52125fb-ce1d-4b59-b967-e30313f1ea9e"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Subscriptions",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OGJlMWU0NS0yNDVjLTRmODYtYTExNi00NzIyMzMwMjYzMzgiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzMTkzOTMsImV4cCI6MTc0MTMyMjk5M30.1t1SErPiH80dEUNmWnI9vN1nDzH2BFhE62YKs7X25Io"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"58be1e45-245c-4f86-a116-472233026338\",\r\n  \"planId\": \"e15ccd03-880a-4f7a-affd-5c877bd44eb4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/subscriptions"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Expired Subscriptions",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5NTc5MWExYS05NjdmLTRkYzItOTc2YS03ZDMyYzUyYTZiNWQiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEyNzYyNDEsImV4cCI6MTc0MTI3OTg0MX0.yq2gEkUa_9W9Ny2qcgNqw9nXbsWdiwh4dwaYTG3ftLs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "localhost:3000/subscriptions/check-expired"
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OGJlMWU0NS0yNDVjLTRmODYtYTExNi00NzIyMzMwMjYzMzgiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzMTkzOTMsImV4cCI6MTc0MTMyMjk5M30.1t1SErPiH80dEUNmWnI9vN1nDzH2BFhE62YKs7X25Io"
+							}
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:3000/subscriptions/0780349f-6a93-4d54-90ad-f513d7dbb13b"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OGJlMWU0NS0yNDVjLTRmODYtYTExNi00NzIyMzMwMjYzMzgiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzMTkzOTMsImV4cCI6MTc0MTMyMjk5M30.1t1SErPiH80dEUNmWnI9vN1nDzH2BFhE62YKs7X25Io"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": \"58be1e45-245c-4f86-a116-472233026338\",\r\n  \"amount\": 53.50,\r\n  \"currency\": \"eur\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:3000/payments"
+					},
+					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OGJlMWU0NS0yNDVjLTRmODYtYTExNi00NzIyMzMwMjYzMzgiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzMTkzOTMsImV4cCI6MTc0MTMyMjk5M30.1t1SErPiH80dEUNmWnI9vN1nDzH2BFhE62YKs7X25Io"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/payments/pi_3Qzs6j4MqtCnFRrt1sP1zFFr"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Invoice",
+			"item": [
+				{
+					"name": "Get by User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OGJlMWU0NS0yNDVjLTRmODYtYTExNi00NzIyMzMwMjYzMzgiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzMTkzOTMsImV4cCI6MTc0MTMyMjk5M30.1t1SErPiH80dEUNmWnI9vN1nDzH2BFhE62YKs7X25Io"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/invoices/user/58be1e45-245c-4f86-a116-472233026338"
+					},
+					"response": []
+				},
+				{
+					"name": "Get by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OGJlMWU0NS0yNDVjLTRmODYtYTExNi00NzIyMzMwMjYzMzgiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzMTkzOTMsImV4cCI6MTc0MTMyMjk5M30.1t1SErPiH80dEUNmWnI9vN1nDzH2BFhE62YKs7X25Io"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/invoices/8eb7a792-65d8-4f1d-851b-b7997a62135f"
+					},
+					"response": []
+				},
+				{
+					"name": "Send",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1OGJlMWU0NS0yNDVjLTRmODYtYTExNi00NzIyMzMwMjYzMzgiLCJlbWFpbCI6Imxlb25hcmRvaGVtbWluZ0BnbWFpbC5jb20iLCJpYXQiOjE3NDEzMTkzOTMsImV4cCI6MTc0MTMyMjk5M30.1t1SErPiH80dEUNmWnI9vN1nDzH2BFhE62YKs7X25Io"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:3000/invoices/send/8eb7a792-65d8-4f1d-851b-b7997a62135f"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
