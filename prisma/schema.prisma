@@ -1,0 +1,67 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  password      String
+  createdAt     DateTime       @default(now())
+  customerId    String
+  isAdmin       Boolean        @default(false)
+  subscriptions Subscription[]
+  payments      Payment[]
+  invoices      Invoice[]
+}
+
+model Plan {
+  id              String   @id @default(uuid())
+  name            String
+  price           Float
+  stripeProductId String   @unique
+  stripePriceId   String   @unique
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  subscriptions Subscription[]
+}
+
+model Subscription {
+  id                   String   @id @default(uuid())
+  userId               String
+  planId               String
+  startDate            DateTime @default(now())
+  endDate              DateTime
+  isActive             Boolean  @default(true)
+  stripeSubscriptionId String?  @unique
+  user                 User     @relation(fields: [userId], references: [id])
+  plan                 Plan     @relation(fields: [planId], references: [id])
+}
+
+model Payment {
+  id        String   @id @default(uuid())
+  userId    String
+  amount    Float
+  currency  String   @default("eur")
+  status    String   @default("pending") // pending, succeeded, failed
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Invoice {
+  id        String    @id @default(uuid())
+  userId    String
+  invoiceId String    @unique
+  amount    Float
+  currency  String    @default("eur")
+  status    String    @default("pending") // pending, paid, failed
+  createdAt DateTime  @default(now())
+  sentAt    DateTime?
+  user      User      @relation(fields: [userId], references: [id])
+}
