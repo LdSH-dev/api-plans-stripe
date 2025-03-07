@@ -1,0 +1,49 @@
+services:
+  api:
+    build: .
+    container_name: nestjs_api
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - stripe-cli
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - app_network
+
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: api_plans
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+  stripe-cli:
+    image: stripe/stripe-cli
+    container_name: stripe_cli
+    restart: always
+    env_file:
+      - .env
+    command: ["listen", "--api-key", "sk_test_51Qzf4X4MqtCnFRrttAsPRl9ugzGpT3p77bQ7kxFeDamDULnZ0gXLnfoaOntzkqWhh8xLAPoemlGJStH5AOwg986W00P1s5IAD6", "--forward-to", "api:3000/webhooks/stripe"]
+    networks:
+      - app_network
+
+volumes:
+  pgdata:
+
+networks:
+  app_network:
+    driver: bridge
