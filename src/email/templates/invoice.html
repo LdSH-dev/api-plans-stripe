@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Invoice</title>
+  <style>
+      body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+      .container { max-width: 600px; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+      h2 { color: #333; }
+      .details { margin-top: 10px; padding: 10px; border: 1px solid #ddd; }
+      .button { display: block; text-align: center; background: #007bff; color: white; padding: 10px; margin-top: 20px; border-radius: 5px; text-decoration: none; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Payment Invoice</h2>
+  <p>Hello, {{customerName}},</p>
+  <p>Here are the details of your invoice:</p>
+
+  <div class="details">
+    <p><strong>Invoice ID:</strong> {{invoiceId}}</p>
+    <p><strong>Amount:</strong> {{amount}} {{currency}}</p>
+    <p><strong>Status:</strong> {{status}}</p>
+    <p><strong>Date:</strong> {{createdAt}}</p>
+  </div>
+</div>
+</body>
+</html>
