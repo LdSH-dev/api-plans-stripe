@@ -1,98 +1,118 @@
-# API de Assinaturas - NestJS + PostgreSQL + Stripe
+# Subscription API - NestJS + PostgreSQL + Stripe
 
-## 🚀 Sobre o projeto
-Este projeto é uma API desenvolvida com **NestJS**, utilizando **PostgreSQL** como banco de dados e **Stripe** para gerenciamento de pagamentos e assinaturas. A API suporta autenticação JWT, criação de planos, assinaturas e faturas automáticas.
+## 🚀 About the Project
 
-## 🛠 Tecnologias
-- **NestJS** (Framework Node.js)
-- **Prisma** (ORM para PostgreSQL)
-- **PostgreSQL** (Banco de dados)
-- **Stripe** (Pagamentos e assinaturas)
-- **Docker e Docker Compose**
+This project is an API developed with **NestJS**, using **PostgreSQL**
+as the database and **Stripe** for payment and subscription management.
+The API supports JWT authentication, plan creation, subscriptions, and
+automatic invoices.
 
-## 📂 Estrutura de Pastas
-```
-📦 api-plans-stripe
- ┣ 📂 prisma      # Configuração do Prisma ORM
- ┣ 📂 src
- ┃ ┣ 📂 auth        # Módulo de autenticação (JWT)
- ┃ ┣ 📂 payments    # Módulo de pagamentos com Stripe
- ┃ ┣ 📂 plans       # Módulo de planos
- ┃ ┣ 📂 subscriptions # Módulo de assinaturas
- ┃ ┣ 📂 invoices    # Módulo de faturas
- ┃ ┣ 📂 email       # Serviço de envio de emails
- ┃ ┗ 📜 main.ts     # Ponto de entrada da aplicação
- ┣ 📜 Dockerfile    # Configuração do Docker
- ┣ 📜 docker-compose.yml # Configuração do Docker Compose
- ┣ 📜 .env.example  # Exemplo de variáveis de ambiente
- ┣ 📜 postman_collection.json  # Arquivo JSON do Postman para facilitar testes
- ┗ 📜 README.md     # Documentação do projeto
-```
+## 🛠 Technologies
 
-## 📦 Configuração e Execução com Docker
+-   **NestJS** (Node.js Framework)
+-   **Prisma** (ORM for PostgreSQL)
+-   **PostgreSQL** (Database)
+-   **Stripe** (Payments and subscriptions)
+-   **Docker and Docker Compose**
 
-### 1️⃣ Clonar o repositório
-```sh
+## 📂 Folder Structure
+
+    📦 api-plans-stripe
+     ┣ 📂 prisma      # Prisma ORM configuration
+     ┣ 📂 src
+     ┃ ┣ 📂 auth        # Authentication module (JWT)
+     ┃ ┣ 📂 payments    # Payments module with Stripe
+     ┃ ┣ 📂 plans       # Plans module
+     ┃ ┣ 📂 subscriptions # Subscriptions module
+     ┃ ┣ 📂 invoices    # Invoices module
+     ┃ ┣ 📂 email       # Email sending service
+     ┃ ┗ 📜 main.ts     # Application entry point
+     ┣ 📜 Dockerfile    # Docker configuration
+     ┣ 📜 docker-compose.yml # Docker Compose configuration
+     ┣ 📜 .env.example  # Example of environment variables
+     ┣ 📜 postman_collection.json  # Postman JSON file for easier testing
+     ┗ 📜 README.md     # Project documentation
+
+## 📦 Setup and Run with Docker
+
+### 1️⃣ Clone the repository
+
+``` sh
 git clone https://github.com/LdSH-dev/api-plans-stripe.git
 cd api-plans-stripe
 ```
 
-### 2️⃣ Criar o arquivo `.env`
-```sh
+### 2️⃣ Create the `.env` file
+
+``` sh
 cp .env.example .env
 ```
 
-### 3️⃣ Construir e iniciar os containers
-```sh
+### 3️⃣ Build and start the containers
+
+``` sh
 docker-compose up --build
 ```
-Isso irá:
-- Iniciar a API NestJS
-- Subir o PostgreSQL
-- Configurar o Stripe CLI para escutar webhooks
 
-### 4️⃣ Acessar a API
-- **API NestJS:** `http://localhost:3000`
-- **Banco de Dados:** `localhost:5432`
+This will: - Start the NestJS API - Start PostgreSQL - Configure Stripe
+CLI to listen for webhooks
 
-## 🔄 Rodando Migrações Prisma
-Caso precise rodar migrações manualmente:
-```sh
+### 4️⃣ Access the API
+
+-   **NestJS API:** `http://localhost:3000`
+-   **Database:** `localhost:5432`
+
+## 🔄 Running Prisma Migrations
+
+If you need to run migrations manually:
+
+``` sh
 docker-compose exec api npx prisma migrate dev
 ```
 
-## 🔗 Endpoints Principais
-### 🔑 Autenticação
-- `POST /auth/register` - Criar usuário
-- `POST /auth/login` - Login e obtenção do JWT
+## 🔗 Main Endpoints
 
-### 📦 Planos
-- `POST /plans` - Criar plano
-- `GET /plans` - Listar planos
-- `GET /plans/:id` - Buscar plano por ID
+### 🔑 Authentication
 
-### 📄 Assinaturas
-- `POST /subscriptions` - Criar assinatura
-- `GET /subscriptions/:id` - Buscar assinatura
-- `DELETE /subscriptions/:id` - Cancelar assinatura
+-   `POST /auth/register` - Create user
+-   `POST /auth/login` - Login and get JWT
 
-### 💰 Pagamentos
-- `POST /payments` - Criar intenção de pagamento
-- `GET /payments/:id` - Buscar status do pagamento
-- `POST /webhooks/stripe` - Webhook do Stripe
+### 📦 Plans
 
-### 📜 Faturas
-- `GET /invoices/:id` - Buscar fatura específica
-- `GET /invoices/user/:userId` - Listar faturas de um usuário
+-   `POST /plans` - Create plan
+-   `GET /plans` - List plans
+-   `GET /plans/:id` - Get plan by ID
 
-## 📧 Envio de E-mails
-O sistema envia faturas via **Nodemailer**, mas já configurei as credenciais SMTP no `.env` para ativar esse recurso.
+### 📄 Subscriptions
 
-## 🛑 Parar e Remover Containers
-```sh
+-   `POST /subscriptions` - Create subscription
+-   `GET /subscriptions/:id` - Get subscription
+-   `DELETE /subscriptions/:id` - Cancel subscription
+
+### 💰 Payments
+
+-   `POST /payments` - Create payment intent
+-   `GET /payments/:id` - Get payment status
+-   `POST /webhooks/stripe` - Stripe webhook
+
+### 📜 Invoices
+
+-   `GET /invoices/:id` - Get specific invoice
+-   `GET /invoices/user/:userId` - List user invoices
+
+## 📧 Email Sending
+
+The system sends invoices via **Nodemailer**, but I've already set the
+SMTP credentials in `.env` to enable this feature.
+
+## 🛑 Stop and Remove Containers
+
+``` sh
 docker-compose down
 ```
 
----
-Projeto desenvolvido para o desafio técnico com integração completa de assinaturas e pagamentos utilizando **NestJS, Prisma, Stripe e Docker**. O projeto contém um **arquivo JSON do Postman** para facilitar os testes da API.
+------------------------------------------------------------------------
 
+Project developed for a technical challenge with full subscription and
+payment integration using **NestJS, Prisma, Stripe, and Docker**. The
+project contains a **Postman JSON file** to simplify API testing.
